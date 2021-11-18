@@ -94,6 +94,9 @@ namespace ConsoleApp1
                 }
             }
 
+            
+            float[] promedios = CalculaPromedioEfectividad(cantidadLanzamientos, totalesCarga);
+
             Console.WriteLine("\n\nResultados obtenidos de los lanzamientos:\n");
 
             Console.Write("\nPlanicie: \tA \tE \tU");
@@ -106,6 +109,30 @@ namespace ConsoleApp1
                 Console.Write(totalesCarga[i] + "\t");
 
 
+
+        Console.Write("\nPromedio: \t");
+            for (int i = 0; i < 3; i++)
+                Console.Write(promedios[i] + "\t");
+
+            Console.WriteLine();   
+
+
+        }
+
+        static float[] CalculaPromedioEfectividad( int [] arregloLanzamientos, float[] arregloCargas)
+        {
+            float[] promedios = new float[3];
+
+            
+            for (int i = 0; i < promedios.Length; i++)
+            {
+               
+                if (arregloLanzamientos[i] == 0)
+                    promedios[i] = 0;
+                else
+                    promedios[i] = arregloCargas[i] / arregloLanzamientos[i];
+            }
+            return promedios;
         }
     }
 }
