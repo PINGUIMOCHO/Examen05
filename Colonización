@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Colonizacion
+    {
+
+        public int totalLanzamientos { get; set; }
+        public string destino { get; set; }
+        public float pesoCarga { get; set; }
+
+
+        public Colonizacion()
+        {
+            totalLanzamientos = 0;
+            destino = "";
+            pesoCarga = 0;
+
+        
+        }
+    }
+}
