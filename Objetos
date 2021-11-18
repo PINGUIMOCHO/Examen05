@@ -1,0 +1,111 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Console.WriteLine("Colonización a Marte - Envío de material a las planicies");
+            Console.WriteLine("Se realizarán 15 lanzamientos de materiales necesarios para la colonización,");
+            Console.WriteLine("que estarán ubicados en las planicies(A)cidalia, (E)lysium y (U)topia.");
+            Console.WriteLine("Cada lanzamiento tiene un cargamento de hasta 10.000 kg.\n");
+
+            Colonizacion[] Lanzamientos = new Colonizacion[15];
+            int totalLanzamientos = 0;
+
+            float[] totalesCarga = new float[3];
+
+           
+            int[] cantidadLanzamientos = new int[3];
+
+         
+            for (int i = 0; i < 3; i++)
+            {
+                totalesCarga[i] = 0;
+                cantidadLanzamientos[i] = 0;
+            }
+
+            for (int i = 0; i < Lanzamientos.Length; i++)
+            {
+                Lanzamientos[i] = new Colonizacion();
+                Console.Write("\nIngresa el destino para el lanzamiento {0} (A,E,U): ", i+ 1);
+                Lanzamientos[i].destino = Console.ReadLine().ToUpper();
+
+                if (Lanzamientos[i].destino == "A" || Lanzamientos[i].destino == "E" || Lanzamientos[i].destino == "U")
+
+                {
+                    try
+                    {
+
+                        Console.Write("Ingresa el valor del cargamento [0;10000]: ");
+                        Lanzamientos[i].pesoCarga = float.Parse(Console.ReadLine());
+
+                        if (Lanzamientos[i].pesoCarga >= 0 && Lanzamientos[i].pesoCarga <= 10000)
+                        {
+
+                            switch (Lanzamientos[i].destino)
+                            {
+
+
+                                case "A":
+                                    cantidadLanzamientos[0]++;
+                                    totalesCarga[0] += Lanzamientos[i].pesoCarga;
+                                    break;
+
+                                case "E":
+                                    cantidadLanzamientos[1]++;
+                                    totalesCarga[1] += Lanzamientos[i].pesoCarga;
+                                    break;
+
+                                case "U":
+                                    cantidadLanzamientos[2]++;
+                                    totalesCarga[2] += Lanzamientos[i].pesoCarga;
+                                    break;
+                            }
+
+                            totalLanzamientos++;
+
+                        }
+
+                        else
+                        {
+                            Console.WriteLine("Ingresaste un valor de carga fuera del rango [0;10000]. Intenta nuevamente! \n");
+
+                        }
+                    }
+
+                    catch (FormatException error)
+                    {
+                        Console.WriteLine("Ingresaste un dato no numérico. Intenta nuevamente!");
+                        Console.WriteLine("Error: {0} \n", error.Message);
+                    }
+
+                }
+
+                else
+                {
+                    Console.WriteLine("Ingresaste un destino inválido. Intenta nuevamente! \n");
+                }
+            }
+
+            Console.WriteLine("\n\nResultados obtenidos de los lanzamientos:\n");
+
+            Console.Write("\nPlanicie: \tA \tE \tU");
+            Console.Write("\nLanzamientos: \t");
+            for (int i = 0; i < 3; i++)
+                Console.Write(cantidadLanzamientos[i] + "\t");
+
+            Console.Write("\nTotal Carga: \t");
+            for (int i = 0; i < 3; i++)
+                Console.Write(totalesCarga[i] + "\t");
+
+
+        }
+    }
+}
