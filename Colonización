@@ -12,7 +12,8 @@ namespace ConsoleApp1
         
         public string destino { get; set; }
         public float pesoCarga { get; set; }
-
+        
+        
 
         public Colonizacion()
         {
