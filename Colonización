@@ -9,7 +9,7 @@ namespace ConsoleApp1
     class Colonizacion
     {
 
-        public int totalLanzamientos { get; set; }
+        
         public string destino { get; set; }
         public float pesoCarga { get; set; }
 
