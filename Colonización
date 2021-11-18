@@ -21,7 +21,7 @@ namespace ConsoleApp1
             destino = "";
             pesoCarga = 0;
 
-        holander
+        
         }
     }
 }
